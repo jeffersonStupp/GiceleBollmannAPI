@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCentralPark", "ApiCentralPark.csproj", "{BA008BF5-2ADE-48F5-B87E-9191C0F287AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA008BF5-2ADE-48F5-B87E-9191C0F287AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA008BF5-2ADE-48F5-B87E-9191C0F287AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA008BF5-2ADE-48F5-B87E-9191C0F287AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA008BF5-2ADE-48F5-B87E-9191C0F287AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E6FB4F7-AA8A-4EF8-927F-4F9DCEEC7D22}
+	EndGlobalSection
+EndGlobal
