@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace ApiCentralPark.Database.Repositorio.Helpers
+namespace GiceleBollmannAPI.Database.Repositorio.Helpers
 {
     public class Helper
     {
@@ -34,6 +34,13 @@ namespace ApiCentralPark.Database.Repositorio.Helpers
         public static string FormatarTelefone(string telefone)
         {
             return telefone = telefone.Insert(0, "(").Insert(3, ")").Insert(9, "-");
+        }
+        public static string FormatarPlaca(string placa)
+        {
+            if (placa.Contains("-"))
+                return placa;
+
+            return placa = placa.ToUpper().Insert(3, "-");
         }
 
 

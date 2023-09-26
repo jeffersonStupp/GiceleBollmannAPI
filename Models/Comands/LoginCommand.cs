@@ -1,4 +1,4 @@
-﻿namespace ApiCentralPark.Models.Comands
+﻿namespace GiceleBollmannAPI.Models.Comands
 {
     public class LoginCommand
     {

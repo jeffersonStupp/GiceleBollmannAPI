@@ -1,11 +1,11 @@
-﻿using ApiCentralPark.Database.Repositorio;
-using ApiCentralPark.Models;
+﻿using GiceleBollmannAPI.Database.Repositorio;
+using GiceleBollmannAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace ApiCentralPark.Controllers
+namespace GiceleBollmannAPI.Controllers
 {
     [ApiController]
     [Authorize]
@@ -57,7 +57,7 @@ namespace ApiCentralPark.Controllers
                 return BadRequest($"Erro na API: {ex.Message} - {ex.StackTrace}");
             }
         }
-
+        [AllowAnonymous]
         [HttpPost]
         [Route("usuario/adicionar")]
         [ProducesResponseType(typeof(Usuario), (int)HttpStatusCode.Created)]
@@ -72,12 +72,12 @@ namespace ApiCentralPark.Controllers
                     return BadRequest("Não foi possível obter o usuário");
                 }
 
-                if (Repositorio.ObterPorNomeOuEmail(usuario.NomeUsuario) != null)
+                if (Repositorio.ObterPorUserNameOuEmail(usuario.UserName) != null)
                 {
                     return BadRequest("Já existe um usuário com o mesmo nome");
                 }
 
-                if (Repositorio.ObterPorNomeOuEmail(usuario.Email) != null)
+                if (Repositorio.ObterPorUserNameOuEmail(usuario.Email) != null)
                 {
                     return BadRequest("Já existe um usuário com o mesmo e-mail");
                 }
@@ -110,8 +110,11 @@ namespace ApiCentralPark.Controllers
                 }
                 else
                 {
-                    usuarioAtualizar.NomeUsuario = usuario.NomeUsuario;
+                    usuarioAtualizar.Id = usuario.Id;
+                    usuarioAtualizar.Nome = usuario.Nome;
                     usuarioAtualizar.Email = usuario.Email;
+                    usuarioAtualizar.UserName = usuario.UserName;
+                    usuarioAtualizar.Telefone = usuario.Telefone;
                     usuarioAtualizar.Senha = usuario.Senha;
                     usuarioAtualizar.Ativo = usuario.Ativo;
                     usuarioAtualizar.Tipo = usuario.Tipo;
@@ -153,5 +156,26 @@ namespace ApiCentralPark.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("usuario/excluir/{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                Usuario usuario = Repositorio.ObterPorId(id);
+                if (usuario == null)
+                {
+                    return NotFound("Usuário não encontrado");
+                }
+                Repositorio.Excluir(id);
+                return NoContent();
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest($"Erro na API: {ex.Message} - {ex.StackTrace}");
+            }
+        }
     }
 }

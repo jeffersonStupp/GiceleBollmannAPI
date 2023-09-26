@@ -1,5 +1,5 @@
-﻿using ApiCentralPark.Models.Comands;
-using ApiCentralPark.Models;
+﻿using GiceleBollmannAPI.Models.Comands;
+using GiceleBollmannAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -7,9 +7,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
-using ApiCentralPark.Database.Repositorio;
+using GiceleBollmannAPI.Database.Repositorio;
 
-namespace ApiCentralPark.Controllers
+namespace GiceleBollmannAPI.Controllers
 {
     [ApiController]
     public class AutenticacaoController : ControllerBase
@@ -27,7 +27,7 @@ namespace ApiCentralPark.Controllers
         {
             try
             {
-                var usuario = Repositorio.ObterPorNomeOuEmail(loginCommand.NomeUsuarioOuEmail);
+                var usuario = Repositorio.ObterPorUserNameOuEmail(loginCommand.NomeUsuarioOuEmail);
 
                 if (usuario == null || usuario.Senha != loginCommand.Senha)
                 {
@@ -42,7 +42,8 @@ namespace ApiCentralPark.Controllers
                 var authClaims = new List<Claim>
             {
                 new Claim("id", usuario.Id.ToString()),
-                new Claim("nomeUsuario", usuario.NomeUsuario.ToString()),
+                new Claim("nome",usuario.Nome.ToString()),
+                new Claim("username", usuario.UserName.ToString()),
                 new Claim("email", usuario.Email.ToString()),
                 new Claim("jti", Guid.NewGuid().ToString()),
             };
@@ -61,8 +62,9 @@ namespace ApiCentralPark.Controllers
                 {
                     Token = "Bearer " + new JwtSecurityTokenHandler().WriteToken(token),
                     DataExpiracao = token.ValidTo,
-                    NomeUsuario = usuario.NomeUsuario,
+                    Nome = usuario.Nome,
                     Email = usuario.Email,
+                    UserName = usuario.UserName,
                     TipoPerfil = usuario.Tipo,
                     IdUsuario = usuario.Id
                 };

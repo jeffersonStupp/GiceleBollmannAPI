@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "ApiCentralPark": {
+    "GiceleBollmannAPI": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

@@ -4,7 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-namespace ApiCentralPark
+namespace GiceleBollmannAPI
 {
     public class Startup
     {
@@ -15,14 +15,13 @@ namespace ApiCentralPark
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
             services.AddControllers();
             services.AddSwaggerGen(swagger =>
             {
-                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "Meu projeto API", Version = "v1" });
+                swagger.SwaggerDoc("v1", new OpenApiInfo { Title = "API GiceleBollmann", Version = "v1" });
                 swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     Name = "Authorization",
@@ -70,7 +69,6 @@ namespace ApiCentralPark
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

@@ -1,4 +1,4 @@
-namespace ApiCentralPark
+namespace GiceleBollmannAPI
 {
     public class Program
     {
