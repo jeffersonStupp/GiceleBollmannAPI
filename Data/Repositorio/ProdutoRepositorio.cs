@@ -36,7 +36,7 @@ namespace GiceleBollmannAPI.Database.Repositorio
         {
             using (var banco = new GBcontexto())
             {
-                var listaprotutos = banco.PRODUTOS.OrderByDescending(p => p.nota).Take(6).ToList();
+                var listaprotutos = banco.PRODUTOS.OrderByDescending(p => p.Nota).Take(6).ToList();
                 return listaprotutos;
             }
            
@@ -74,6 +74,16 @@ namespace GiceleBollmannAPI.Database.Repositorio
                     banco.Remove(produto);
                     banco.SaveChanges();
                 }
+            }
+        }
+
+        public Produto Atualizar(Produto produto)
+        {
+            using (var banco = new GBcontexto())
+            {
+                banco.PRODUTOS.Update(produto);
+                banco.SaveChanges();
+                return produto;
             }
         }
 

@@ -80,7 +80,7 @@ namespace GiceleBollmannAPI
             app.UseAuthorization();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Meu projeto API v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gicele Bollmann v1"));
 
             app.UseCors(option =>
             {
