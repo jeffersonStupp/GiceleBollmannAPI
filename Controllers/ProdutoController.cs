@@ -127,7 +127,7 @@ namespace GiceleBollmannAPI.Controllers
                     produtoAtualizar.Id = produto.Id;
                     produtoAtualizar.Titulo = produto.Titulo;
                     produtoAtualizar.Descricao = produto.Descricao;
-                    produtoAtualizar.Nota = produto.Nota;
+                    //produtoAtualizar.Nota = produto.Nota;
                     produtoAtualizar.Imagem = produto.Imagem;
                     produtoAtualizar.Preco = produto.Preco;
                     repositorio.Atualizar(produtoAtualizar);
@@ -137,7 +137,7 @@ namespace GiceleBollmannAPI.Controllers
             catch (Exception ex)
             {
 
-                return BadRequest($"Erro na API: {ex.Message} - {ex.StackTrace}"); ;
+                return BadRequest($"Erro na API: {ex.Message} - {ex.StackTrace}"); 
             }
         }
         [HttpPost]

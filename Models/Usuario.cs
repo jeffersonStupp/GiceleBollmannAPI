@@ -10,5 +10,6 @@
         public string Senha { get; set; }
         public bool Ativo { get; set; }
         public string Tipo { get; set; } //'administrador' ou 'usuario'
+        public Pontuacao Pontuacao { get; set; } 
     }
 }

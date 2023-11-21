@@ -3,6 +3,7 @@ using GiceleBollmannAPI.Database.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GiceleBollmannAPI.Migrations
 {
     [DbContext(typeof(GBcontexto))]
-    partial class GBcontextoModelSnapshot : ModelSnapshot
+    [Migration("20231111155237_Recuperando")]
+    partial class Recuperando
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,32 +23,6 @@ namespace GiceleBollmannAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("GiceleBollmannAPI.Models.Pontuacao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Nota")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProdutoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProdutoId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("PONTUACAO");
-                });
 
             modelBuilder.Entity("GiceleBollmannAPI.Models.Produto", b =>
                 {
@@ -148,35 +125,6 @@ namespace GiceleBollmannAPI.Migrations
                             Tipo = "administrador",
                             UserName = "stupp"
                         });
-                });
-
-            modelBuilder.Entity("GiceleBollmannAPI.Models.Pontuacao", b =>
-                {
-                    b.HasOne("GiceleBollmannAPI.Models.Produto", "Produto")
-                        .WithMany("Pontuacoes")
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GiceleBollmannAPI.Models.Usuario", "Usuario")
-                        .WithMany("Pontuacoes")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Produto");
-
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("GiceleBollmannAPI.Models.Produto", b =>
-                {
-                    b.Navigation("Pontuacoes");
-                });
-
-            modelBuilder.Entity("GiceleBollmannAPI.Models.Usuario", b =>
-                {
-                    b.Navigation("Pontuacoes");
                 });
 #pragma warning restore 612, 618
         }

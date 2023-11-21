@@ -14,8 +14,6 @@ namespace GiceleBollmannAPI.Database.Configs
             builder.Property(x => x.Descricao).IsRequired();
             builder.Property(x => x.Imagem).IsRequired();
             builder.Property(x => x.Preco).HasColumnType("money").IsRequired();
-            
-
         }
     }
 }

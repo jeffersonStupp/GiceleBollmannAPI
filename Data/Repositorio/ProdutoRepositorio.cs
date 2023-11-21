@@ -32,15 +32,15 @@ namespace GiceleBollmannAPI.Database.Repositorio
             }
 
         }
-        public List<Produto> ListarTops()
-        {
-            using (var banco = new GBcontexto())
-            {
-                var listaprotutos = banco.PRODUTOS.OrderByDescending(p => p.Nota).Take(6).ToList();
-                return listaprotutos;
-            }
+        //public List<Produto> ListarTops()
+        //{
+        //    using (var banco = new GBcontexto())
+        //    {
+        //        var listaprotutos = banco.PRODUTOS.OrderByDescending(p => p.Nota).Take(6).ToList();
+        //        return listaprotutos;
+        //    }
            
-        }
+        //}
         public Produto ObterPorTitulo(string titulo)
         {
             using (var banco = new GBcontexto())

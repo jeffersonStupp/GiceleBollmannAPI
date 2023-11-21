@@ -1,4 +1,6 @@
-﻿using GiceleBollmannAPI.Database.Configs;
+﻿
+using GiceleBollmannAPI.Data.Configs;
+using GiceleBollmannAPI.Database.Configs;
 using GiceleBollmannAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +10,7 @@ namespace GiceleBollmannAPI.Database.Contexto
     {
         public DbSet<Usuario> USUARIOS { get; set; }
         public DbSet<Produto> PRODUTOS { get; set; }
+        public DbSet<Pontuacao> PONTUACAO { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,6 +24,7 @@ namespace GiceleBollmannAPI.Database.Contexto
         {
             modelBuilder.ApplyConfiguration(new UsuarioConfig());
             modelBuilder.ApplyConfiguration(new ProdutoConfig());
+            modelBuilder.ApplyConfiguration(new PontuacaoConfig());
         }
     }
 }
